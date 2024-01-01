@@ -20,6 +20,8 @@ public:
 private slots:
     void on_action_btn_clicked();
 
+    void on_cb_alphabetical_stateChanged(int arg1);
+
 private:
     Ui::PasswordGenerator *ui;
 };

@@ -15,6 +15,8 @@ PasswordGenerator::~PasswordGenerator()
 
 void PasswordGenerator::on_action_btn_clicked()
 {
+    ui->output->setStyleSheet(ui->output_label->styleSheet().remove("font-family: 'JetBrains Mono NL', 'Noto Mono', 'Consolas', monospace;"));
+
     QString allowedCharacters;
     if(ui->cb_alphabetical->isChecked()) {
         allowedCharacters.append("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
@@ -33,22 +35,30 @@ void PasswordGenerator::on_action_btn_clicked()
     }
 
     if(allowedCharacters.isEmpty()) {
-        ui->output_label->setStyleSheet(ui->output_label->styleSheet().append("color: red;"));
-        ui->output_label->setText("No characters were selected!");
+        ui->output->setStyleSheet(ui->output_label->styleSheet().append("color: red;"));
+        ui->output->setText("No characters were selected!");
         return;
     }
 
-    ui->output_label->setStyleSheet(ui->output_label->styleSheet().remove("color: red;"));
+    ui->output->setStyleSheet(ui->output_label->styleSheet().remove("color: red;"));
 
     QString password;
     int length = ui->length->value();
     for(int i = 0; i < length; i++) {
         QChar c = allowedCharacters.at(rand() % allowedCharacters.length());
-        while(password.contains(c))
-            c = allowedCharacters.at(rand() % allowedCharacters.length());
+
+        if(length <= allowedCharacters.length())
+            while(password.contains(c))
+                c = allowedCharacters.at(rand() % allowedCharacters.length());
+
         password.append(c);
     }
 
-    ui->output_label->setText("Your password is: " + password);
+    ui->output->setText(password);
+}
+
+void PasswordGenerator::on_cb_alphabetical_stateChanged(int arg1)
+{
+
 }
 

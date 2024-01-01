@@ -8,7 +8,7 @@
 	<string>APPL</string>
 
 	<key>CFBundleName</key>
-	<string>PasswordGenerator</string>
+	<string>Password Generator</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.mrehfeld-code.PasswordGenerator</string>
 	<key>CFBundleExecutable</key>
@@ -23,7 +23,7 @@
 	<string></string>
 
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright &copy; 2024 by mrehfeld-code</string>
+	<string></string>
 
 	<key>CFBundleIconFile</key>
 	<string>PasswordGenerator.png</string>
